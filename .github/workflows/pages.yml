@@ -30,7 +30,7 @@ jobs:
         run: git switch GHPagesTest
         
       - name: test
-        run: ll
+        run: ls -la
         
       - name: move contents of public folder to root folder
         run: mv -v ./public/* .
