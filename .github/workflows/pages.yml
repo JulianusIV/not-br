@@ -22,6 +22,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      
+      - name: set author name
+        run: git config --global user.name "JulianusIV"
+      - name: set author mail
+        run: git config --global user.email ${{secrets.GH_MAIL}}
+        
       - name: verify remote
         run: git remote -v
       - name: pull from remote
@@ -41,10 +47,6 @@ jobs:
         
       - name: add
         run: git add . --force
-      - name: set author name
-        run: git config --global user.name "JulianusIV"
-      - name: set author mail
-        run: git config --global user.email ${{secrets.GH_MAIL}}
       - name: commit
         run: git commit -m 'Autoupdate Pages'
       - name: push
