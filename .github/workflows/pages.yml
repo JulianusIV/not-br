@@ -28,6 +28,10 @@ jobs:
         run: git fetch
       - name: Switch to GHPagesTest Branch
         run: git switch GHPagesTest
+        
+      - name: test
+        run: ll
+        
       - name: move contents of public folder to root folder
         run: mv -v ./public/* .
       - name: Delete pulic folder
