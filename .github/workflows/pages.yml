@@ -22,9 +22,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - name: Add remote
+        run: git remote add origin https://github.com/JulianusIV/not-br.git
+      - name: verify remote
+        run: git remote -v
+      - name: fetch from remote
+        run: git fetch
       - name: Switch to GHPagesTest Branch
         run: git switch GHPagesTest
-      - name: Run a one-line script
+      - name: move contents of public folder to root folder
         run: mv -v ./public/* .
       - name: Delete pulic folder
         run: rm -r public
