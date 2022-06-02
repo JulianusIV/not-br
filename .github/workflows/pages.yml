@@ -28,7 +28,9 @@ jobs:
         run: git fetch
       - name: Switch to GHPagesTest Branch
         run: git switch GHPagesTest
-        
+      - name: merge master into PagesBranch
+        run: git merge main
+      
       - name: test
         run: ls -la
         
