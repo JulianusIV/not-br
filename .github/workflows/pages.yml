@@ -28,7 +28,7 @@ jobs:
         run: rm -r public
         
       - name: add
-        run: git add PiBlock.tar.gz --force
+        run: git add . --force
       - name: set author name
         run: git config --global user.name "JulianusIV"
       - name: set author mail
