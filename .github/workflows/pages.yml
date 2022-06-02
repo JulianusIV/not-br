@@ -23,28 +23,31 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
+      # Set author data
       - name: set author name
         run: git config --global user.name "JulianusIV"
       - name: set author mail
         run: git config --global user.email ${{secrets.GH_MAIL}}
         
+      #set up branches
       - name: verify remote
         run: git remote -v
       - name: pull from remote
         run: git pull
       - name: Switch to GHPagesTest Branch
         run: git switch GHPagesTest
+        
+      #update pages branch to state of main branch
       - name: merge main into PagesBranch
         run: git merge main --allow-unrelated-histories
       
-      - name: test
-        run: ls -la
-        
+      #do file movements
       - name: move contents of public folder to root folder
         run: mv -v ./public/* .
       - name: Delete pulic folder
         run: rm -r public
         
+      #commit and push to github
       - name: add
         run: git add . --force
       - name: commit
